@@ -9,11 +9,11 @@ class StandardRules
       raise ArgumentError if pins > MAX_PINS or pins < MIN_PINS
       frame.add_ball(Ball.new(pins))
       unless frame.last_frame?
-        if(frame.number_of_balls == 1 && frame.pins == MAX_PINS)
+        if frame.number_of_balls == 1 && frame.pins == MAX_PINS
           frame.set_result :strike
           frame_done = true
         end
-        if(frame.number_of_balls == 2 && frame.pins == MAX_PINS)
+        if frame.number_of_balls == 2 && frame.pins == MAX_PINS
           frame.set_result :spare
           frame_done = true
         else
@@ -21,18 +21,18 @@ class StandardRules
           frame_done = true
         end
       else
-        if(frame.number_of_balls == 1 && frame.pins == MAX_PINS)
+        if frame.number_of_balls == 1 && frame.pins == MAX_PINS
           frame.set_result :strike
           next
         end
-        if(frame.number_of_balls == 2 && frame.pins == MAX_PINS)
+        if frame.number_of_balls == 2 && frame.pins == MAX_PINS
           frame.set_result :spare
           next
         else
           frame.set_result :open
           frame_done = true
         end
-        if(frame.number_of_balls == 3)
+        if frame.number_of_balls == 3
           frame_done = true
         end
       end
