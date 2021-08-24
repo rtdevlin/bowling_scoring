@@ -1,8 +1,9 @@
-require './ball'
+require './game/ball'
 class Frame
   def self.valid_results
     [:strike, :spare, :open]
   end
+  attr_reader :throws
 
   def initialize
     @last_frame = false
@@ -16,12 +17,12 @@ class Frame
   end
 
   def set_result(result)
-    raise ArgumentError unless valid_results.include? result
+    raise ArgumentError unless Frame.valid_results.include? result
     @result = result
   end
 
   def set_last_frame
-    @frame = true
+    @last_frame = true
   end
 
   def last_frame?
